@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './FormComponentStyle.css';
+import "./FormComponentStyle.css";
 import {
   Q1Detail,
   Q2Detail,
@@ -29,28 +29,28 @@ export default function FormComponent(props) {
   const [q4SelectedValue, setQ4SelectedValue] = useState(null);
   const [q5SelectedValue, setQ5SelectedValue] = useState(null);
   const [activeStep, setActiveStep] = useState(0);
-  const [answers, setAnswers] = useState({ Q1: null, Q2: null, Q3: null, Q4: null, Q5: null });
-  const [disable, setDisable] = useState(true)
-
+  const [answers, setAnswers] = useState({
+    Q1: null,
+    Q2: null,
+    Q3: null,
+    Q4: null,
+    Q5: null,
+  });
+  const [disable, setDisable] = useState(true);
 
   // function on Next button
 
   const nextStep = () => {
-
     if (steps.length) {
-
       setActiveStep(activeStep + 1);
     }
 
     setDisable(true);
   };
 
-
   // function on Previous button
 
   const previousStep = (e) => {
-
-
     if (activeStep !== 0) {
       setDisable(false);
     } else {
@@ -66,7 +66,7 @@ export default function FormComponent(props) {
 
   console.log(answers);
 
-  let sum = 0;
+  let sum=0;
 
   const handleFinish = (e) => {
     for (let i in answers) {
@@ -81,9 +81,7 @@ export default function FormComponent(props) {
   };
 
   const handleQuestionOne = (e) => {
-
     setDisable(false);
-
 
     setQ1SelectedValue(e.value);
 
@@ -92,14 +90,10 @@ export default function FormComponent(props) {
     const name = e.name;
 
     setAnswers({ ...answers, [name]: value });
-
   };
 
   const handleQuestionTwo = (e) => {
     // handleRadio(item)
-
-
-
 
     setQ2SelectedValue(e.value);
 
@@ -109,12 +103,9 @@ export default function FormComponent(props) {
 
     setAnswers({ ...answers, [name]: value });
     setDisable(false);
-
   };
 
   const handleQuestionThree = (e) => {
-
-
     setQ3SelectedValue(e.value);
 
     const value = e.value;
@@ -123,13 +114,9 @@ export default function FormComponent(props) {
 
     setAnswers({ ...answers, [name]: value });
     setDisable(false);
-
   };
 
   const handleQuestionFour = (e) => {
-
-
-
     setQ4SelectedValue(e.value);
 
     const value = e.value;
@@ -138,13 +125,9 @@ export default function FormComponent(props) {
 
     setAnswers({ ...answers, [name]: value });
     setDisable(false);
-
   };
 
   const handleQuestionFive = (e) => {
-
-
-
     setQ5SelectedValue(e.value);
 
     const value = e.value;
@@ -154,7 +137,6 @@ export default function FormComponent(props) {
     setAnswers({ ...answers, [name]: value });
 
     setDisable(false);
-
   };
 
   // definning array for steppers
@@ -168,7 +150,12 @@ export default function FormComponent(props) {
   ];
 
   const isDisableToMoveForward =
-    activeStep === steps.length && q1SelectedValue === null && q2SelectedValue === null && q3SelectedValue === null && q4SelectedValue === null && q5SelectedValue === null;
+    activeStep === steps.length &&
+    q1SelectedValue === null &&
+    q2SelectedValue === null &&
+    q3SelectedValue === null &&
+    q4SelectedValue === null &&
+    q5SelectedValue === null;
 
   const getStepContent = (stepIndex) => {
     switch (stepIndex) {
@@ -306,7 +293,7 @@ export default function FormComponent(props) {
 
   return (
     <Box className="mainbg">
-      <Box >
+      <Box>
         <Box
           sx={{
             height: "auto",
@@ -321,8 +308,8 @@ export default function FormComponent(props) {
             alternativeLabel
           >
             {steps.map((label) => (
-              <Step key={label} className={"red"} >
-                <StepLabel sx={{ color: "white", }}>{label}</StepLabel>
+              <Step key={label} className={"red"}>
+                <StepLabel sx={{ color: "white" }}>{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
