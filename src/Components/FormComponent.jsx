@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./FormComponentStyle.css";
-import {
-  Q1Detail,
-  Q2Detail,
-  Q3Detail,
-  Q4Detail,
-  Q5Detail,
-} from "./QuestionsArray";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   FormControl,
   Radio,
@@ -18,8 +11,15 @@ import {
   StepLabel,
   Button,
 } from "@mui/material";
-
-import { Link } from "react-router-dom";
+import {
+  Q1Detail,
+  Q2Detail,
+  Q3Detail,
+  Q4Detail,
+  Q5Detail,
+} from "./QuestionsArray";
+import { steps, questions } from "../constants";
+import { Question } from "./Question";
 
 export default function FormComponent(props) {
   const { setFinishStatus } = props;
@@ -39,40 +39,30 @@ export default function FormComponent(props) {
   const [disable, setDisable] = useState(true);
 
   // function on Next button
-
   const nextStep = () => {
     if (steps.length) {
       setActiveStep(activeStep + 1);
     }
-
     setDisable(true);
   };
 
   // function on Previous button
-
   const previousStep = (e) => {
     if (activeStep !== 0) {
       setDisable(false);
     } else {
       setDisable(true);
     }
-
     if (activeStep !== steps.length) {
       setActiveStep(activeStep - 1);
     }
   };
 
-  // function on Fininsh button
-
-  console.log(answers);
-
-  let sum=0;
-
   const handleFinish = (e) => {
+    let sum = 0;
     for (let i in answers) {
       sum += answers[i];
     }
-    console.log(sum);
     if (sum > 39) {
       setFinishStatus(true);
     } else {
@@ -80,109 +70,50 @@ export default function FormComponent(props) {
     }
   };
 
-  const handleQuestionOne = (e) => {
+  const selectOption = (name, value) => {
     setDisable(false);
-
-    setQ1SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q1Detail);
-    const name = e.name;
-
     setAnswers({ ...answers, [name]: value });
   };
 
-  const handleQuestionTwo = (e) => {
-    // handleRadio(item)
-
-    setQ2SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q2Detail);
-    const name = e.name;
-
+  const handleQuestionTwo = ({ name, value }) => {
+    setQ2SelectedValue(value);
     setAnswers({ ...answers, [name]: value });
     setDisable(false);
   };
 
-  const handleQuestionThree = (e) => {
-    setQ3SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q3Detail);
-    const name = e.name;
-
+  const handleQuestionThree = ({ name, value }) => {
+    setQ3SelectedValue(value);
     setAnswers({ ...answers, [name]: value });
     setDisable(false);
   };
 
-  const handleQuestionFour = (e) => {
-    setQ4SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q2Detail);
-    const name = e.name;
-
+  const handleQuestionFour = ({ name, value }) => {
+    setQ4SelectedValue(value);
     setAnswers({ ...answers, [name]: value });
     setDisable(false);
   };
 
-  const handleQuestionFive = (e) => {
-    setQ5SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q2Detail);
-    const name = e.name;
-
+  const handleQuestionFive = ({ name, value }) => {
+    setQ5SelectedValue(value);
     setAnswers({ ...answers, [name]: value });
-
     setDisable(false);
   };
 
   // definning array for steppers
 
-  const steps = [
-    "Question 1",
-    "Question 2",
-    "Question 3",
-    "Question 4",
-    "Question 5",
-  ];
-
-  const isDisableToMoveForward =
-    activeStep === steps.length &&
-    q1SelectedValue === null &&
-    q2SelectedValue === null &&
-    q3SelectedValue === null &&
-    q4SelectedValue === null &&
-    q5SelectedValue === null;
-
   const getStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
         return (
-          <Box>
-            <h2>Question 1 of 5</h2>
-            <FormControl>
-              <h3>
-                You are really busy at work and a colleague is telling you their
-                life story and personal woes. You:
-              </h3>
-
-              <RadioGroup value={q1SelectedValue}>
-                {Q1Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionOne(item)}
-                    name="Q1"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <Question
+            label="Q1"
+            q1SelectedValue={q1SelectedValue}
+            Q1Detail={Q1Detail}
+            optionChange={(name, value) => {
+              setQ1SelectedValue(value);
+              selectOption(name, value);
+            }}
+          />
         );
 
       case 1:
@@ -341,7 +272,18 @@ export default function FormComponent(props) {
                 height: "auto",
               }}
             ></Box>
-            <Box>{getStepContent(activeStep)}</Box>
+            <Box>
+              {questions.map((questionDetail, index) => (
+                <Question
+                  label="Q1"
+                  questionDetail={questionDetail}
+                  optionChange={(name, value) => {
+                    setQ1SelectedValue(value);
+                    selectOption(name, value);
+                  }}
+                />
+              ))}
+            </Box>
 
             <Box sx={{ display: "flex", mt: 3, mb: 2 }}>
               <Button

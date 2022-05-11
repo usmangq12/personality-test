@@ -1,7 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-
 export function Result(props) {
   const { isFinish } = props;
 
@@ -15,18 +14,18 @@ export function Result(props) {
       marginRight={"10%"}
       marginLeft={"10%"}
     >
-
-
       <Box>
         {isFinish ? (
-          <Box >
+          <Box>
             {" "}
             <Box
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
               flexDirection={"row"}
-              fontFamily={"Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"}
+              fontFamily={
+                "Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              }
             >
               <h1>" You are an Extrovert! "</h1>
             </Box>
@@ -45,18 +44,18 @@ export function Result(props) {
               justifyContent={"center"}
               alignItems={"center"}
               flexDirection={"row"}
-              fontFamily={"Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"}
-
+              fontFamily={
+                "Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              }
             >
               <h1>" You are an Introvert! "</h1>
             </Box>
             <h3>
-              An introvert is a person with
-              qualities of a personality type known as introversion, which means
-              that they feel more comfortable focusing on their inner thoughts
-              and ideas, rather than what's happening externally. They enjoy
-              spending time with just one or two people, rather than large
-              groups or crowds
+              An introvert is a person with qualities of a personality type
+              known as introversion, which means that they feel more comfortable
+              focusing on their inner thoughts and ideas, rather than what's
+              happening externally. They enjoy spending time with just one or
+              two people, rather than large groups or crowds
             </h3>
           </Box>
         )}

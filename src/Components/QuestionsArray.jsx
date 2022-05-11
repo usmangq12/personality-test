@@ -1,7 +1,6 @@
 export const Q1Detail = [
     {
       option: "Dont dare to interrupt them",
-
       value: 2,
       Checked: false,
       name: "Q1",
@@ -26,7 +25,6 @@ export const Q1Detail = [
       name: "Q1",
     },
   ];
-
 
   export const Q2Detail = [
     {
