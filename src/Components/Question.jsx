@@ -7,28 +7,22 @@ import {
   Box,
 } from "@mui/material";
 
-export const Question = ({
-  label,
-  questionDetail,
-  questionDetails,
-  optionChange,
-}) => {
-  const { questionOptions, selectedValue } = questionDetail;
+export const Question = ({ label, questionDetail, optionChange }) => {
+  const { questionOptions, question, questionNo, selectedValue } =
+    questionDetail;
+
   return (
     <Box>
-      <h2>Question 1 of 5</h2>
+      <h2>Question {questionNo} of 5</h2>
       <FormControl>
-        <h3>
-          You are really busy at work and a colleague is telling you their life
-          story and personal woes. You:
-        </h3>
+        <h3>{question}</h3>
 
         <RadioGroup value={selectedValue}>
           {questionOptions.map(({ name, value, option }) => (
             <FormControlLabel
               key={value}
               value={value}
-              control={<Radio color="primary" />}
+              control={<Radio />}
               label={option}
               onChange={() => {
                 optionChange(name, value);

@@ -8,6 +8,8 @@ export const steps = [
 
 export const questions = [
   {
+    question:
+      "You are really busy at work and a colleague is telling you their life story and personal woes. You:",
     selectedValue: "",
     questionOptions: [
       {
@@ -38,6 +40,8 @@ export const questions = [
     ],
   },
   {
+    question:
+      "You have been sitting in the doctor's waiting room for more than 25 minutes. You:",
     selectedValue: "",
     questionOptions: [
       {
@@ -68,6 +72,7 @@ export const questions = [
     ],
   },
   {
+    question: "You are taking part in a guided tour of a museum. You:",
     selectedValue: "",
     questionOptions: [
       {
@@ -99,6 +104,8 @@ export const questions = [
     ],
   },
   {
+    question:
+      "During dinner parties at your home, you have a hard time with people who:",
     selectedValue: "",
     questionOptions: [
       {
@@ -128,6 +135,8 @@ export const questions = [
     ],
   },
   {
+    question:
+      "You have been see a movie with your family and the reviews are mixed. You:",
     selectedValue: "",
     questionOptions: [
       {

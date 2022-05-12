@@ -105,115 +105,71 @@ export default function FormComponent(props) {
     switch (stepIndex) {
       case 0:
         return (
-          <Question
-            label="Q1"
-            q1SelectedValue={q1SelectedValue}
-            Q1Detail={Q1Detail}
-            optionChange={(name, value) => {
-              setQ1SelectedValue(value);
-              selectOption(name, value);
-            }}
-          />
+          <Box>
+            <Question
+              label="Q1"
+              questionDetail={questions[0]}
+              optionChange={(name, value) => {
+                setQ1SelectedValue(value);
+                selectOption(name, value);
+              }}
+            />
+          </Box>
         );
 
       case 1:
         return (
           <Box>
-            <h2>Question 2 of 5</h2>
-            <FormControl>
-              <h3>
-                You have been sitting in the doctor's waiting room for more than
-                25 minutes. You:
-              </h3>
-
-              <RadioGroup value={q2SelectedValue}>
-                {Q2Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionTwo(item)}
-                    name="Q2"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
+            <Question
+              label="Q1"
+              questionDetail={questions[1]}
+              optionChange={(name, value) => {
+                setQ1SelectedValue(value);
+                selectOption(name, value);
+              }}
+            />
           </Box>
         );
 
       case 2:
         return (
           <Box>
-            <h2>Question 3 of 5</h2>
-            <FormControl>
-              <h3>You are taking part in a guided tour of a museum. You:</h3>
-
-              <RadioGroup value={q3SelectedValue}>
-                {Q3Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    value={item.value}
-                    onChange={() => handleQuestionThree(item)}
-                    name="Q3"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
+            <Question
+              label="Q1"
+              questionDetail={questions[2]}
+              optionChange={(name, value) => {
+                setQ1SelectedValue(value);
+                selectOption(name, value);
+              }}
+            />
           </Box>
         );
 
       case 3:
         return (
           <Box>
-            <h2>Question 4 of 5</h2>
-            <FormControl>
-              <h3>
-                During dinner parties at your home, you have a hard time with
-                people who:
-              </h3>
-
-              <RadioGroup value={q4SelectedValue}>
-                {Q4Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionFour(item)}
-                    name="Q4"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
+            <Question
+              label="Q1"
+              questionDetail={questions[3]}
+              optionChange={(name, value) => {
+                setQ1SelectedValue(value);
+                selectOption(name, value);
+              }}
+            />
           </Box>
         );
 
       case 4:
         return (
           <Box>
-            <h2>Question 5 of 5</h2>
-            <FormControl>
-              <h3>
-                You have been see a movie with your family and the reviews are
-                mixed. You:
-              </h3>
-
-              <RadioGroup value={q5SelectedValue}>
-                {Q5Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionFive(item)}
-                    name="Q5"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
+            <Question
+              label="Q1"
+              questionDetail={questions[4]}
+              optionChange={(name, value) => {
+                setQ1SelectedValue(value);
+                selectOption(name, value);
+              }}
+            />
           </Box>
         );
 
@@ -272,18 +228,7 @@ export default function FormComponent(props) {
                 height: "auto",
               }}
             ></Box>
-            <Box>
-              {questions.map((questionDetail, index) => (
-                <Question
-                  label="Q1"
-                  questionDetail={questionDetail}
-                  optionChange={(name, value) => {
-                    setQ1SelectedValue(value);
-                    selectOption(name, value);
-                  }}
-                />
-              ))}
-            </Box>
+            <Box>{getStepContent(activeStep)}</Box>
 
             <Box sx={{ display: "flex", mt: 3, mb: 2 }}>
               <Button
