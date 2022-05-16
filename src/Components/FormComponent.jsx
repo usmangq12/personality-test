@@ -1,33 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  FormControl,
-  Radio,
-  FormControlLabel,
-  RadioGroup,
-  Box,
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-} from "@mui/material";
-import {
-  Q1Detail,
-  Q2Detail,
-  Q3Detail,
-  Q4Detail,
-  Q5Detail,
-} from "./QuestionsArray";
+import { Box, Stepper, Step, StepLabel, Button } from "@mui/material";
+
 import { steps, questions } from "../constants";
 import { Question } from "./Question";
 
 export default function FormComponent(props) {
   const { setFinishStatus } = props;
-  const [q1SelectedValue, setQ1SelectedValue] = useState(null);
-  const [q2SelectedValue, setQ2SelectedValue] = useState(null);
-  const [q3SelectedValue, setQ3SelectedValue] = useState(null);
-  const [q4SelectedValue, setQ4SelectedValue] = useState(null);
-  const [q5SelectedValue, setQ5SelectedValue] = useState(null);
   const [activeStep, setActiveStep] = useState(0);
   const [answers, setAnswers] = useState({
     Q1: null,
@@ -43,7 +22,21 @@ export default function FormComponent(props) {
     if (steps.length) {
       setActiveStep(activeStep + 1);
     }
-    setDisable(true);
+    if (activeStep === 0 && answers.Q1 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 1 && answers.Q2 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 2 && answers.Q3 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 3 && answers.Q4 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 4 && answers.Q5 !== null) {
+      setDisable(!disable);
+    }
   };
 
   // function on Previous button
@@ -55,6 +48,21 @@ export default function FormComponent(props) {
     }
     if (activeStep !== steps.length) {
       setActiveStep(activeStep - 1);
+    }
+    if (activeStep === 0 && answers.Q1 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 1 && answers.Q2 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 2 && answers.Q3 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 3 && answers.Q4 !== null) {
+      setDisable(!disable);
+    }
+    if (activeStep === 4 && answers.Q5 !== null) {
+      setDisable(!disable);
     }
   };
 
@@ -75,30 +83,6 @@ export default function FormComponent(props) {
     setAnswers({ ...answers, [name]: value });
   };
 
-  const handleQuestionTwo = ({ name, value }) => {
-    setQ2SelectedValue(value);
-    setAnswers({ ...answers, [name]: value });
-    setDisable(false);
-  };
-
-  const handleQuestionThree = ({ name, value }) => {
-    setQ3SelectedValue(value);
-    setAnswers({ ...answers, [name]: value });
-    setDisable(false);
-  };
-
-  const handleQuestionFour = ({ name, value }) => {
-    setQ4SelectedValue(value);
-    setAnswers({ ...answers, [name]: value });
-    setDisable(false);
-  };
-
-  const handleQuestionFive = ({ name, value }) => {
-    setQ5SelectedValue(value);
-    setAnswers({ ...answers, [name]: value });
-    setDisable(false);
-  };
-
   // definning array for steppers
 
   const getStepContent = (stepIndex) => {
@@ -107,10 +91,10 @@ export default function FormComponent(props) {
         return (
           <Box>
             <Question
-              label="Q1"
+              label="Question 1"
+              answers={answers[0]}
               questionDetail={questions[0]}
               optionChange={(name, value) => {
-                setQ1SelectedValue(value);
                 selectOption(name, value);
               }}
             />
@@ -121,10 +105,10 @@ export default function FormComponent(props) {
         return (
           <Box>
             <Question
-              label="Q1"
+              label="Question 2"
+              answers={answers[1]}
               questionDetail={questions[1]}
               optionChange={(name, value) => {
-                setQ1SelectedValue(value);
                 selectOption(name, value);
               }}
             />
@@ -135,10 +119,10 @@ export default function FormComponent(props) {
         return (
           <Box>
             <Question
-              label="Q1"
+              label="Question 3"
+              answers={answers[2]}
               questionDetail={questions[2]}
               optionChange={(name, value) => {
-                setQ1SelectedValue(value);
                 selectOption(name, value);
               }}
             />
@@ -149,10 +133,10 @@ export default function FormComponent(props) {
         return (
           <Box>
             <Question
-              label="Q1"
+              label="Question 4"
+              answers={answers[3]}
               questionDetail={questions[3]}
               optionChange={(name, value) => {
-                setQ1SelectedValue(value);
                 selectOption(name, value);
               }}
             />
@@ -163,10 +147,10 @@ export default function FormComponent(props) {
         return (
           <Box>
             <Question
-              label="Q1"
+              label="Question 5"
+              answers={answers[4]}
               questionDetail={questions[4]}
               optionChange={(name, value) => {
-                setQ1SelectedValue(value);
                 selectOption(name, value);
               }}
             />

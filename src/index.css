@@ -5,16 +5,17 @@ body {
   font-family: 'Roboto', sans-serif !important;
   /* background: linear-gradient(to right bottom, #ddd6f3, #faaca8);
    */
-   background-size: cover;
-   color: black;
-   font-weight: normal;
-   background: white ;
+  background-size: cover;
+  color: black;
+  font-weight: normal;
+  background: white;
 }
 
-.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active{
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
   color: rgb(43, 105, 238) !important;
 }
-.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed{
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
   color: rgb(48, 78, 247) !important;
 
 }
