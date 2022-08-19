@@ -1,78 +1,35 @@
 import React, { useState, useEffect } from "react";
-import "./FormComponentStyle.css";
+import { Link } from "react-router-dom";
 import {
-  Q1Detail,
-  Q2Detail,
-  Q3Detail,
-  Q4Detail,
-  Q5Detail,
-} from "./QuestionsArray";
-import {
-  FormControl,
-  Radio,
-  FormControlLabel,
-  RadioGroup,
   Box,
   Stepper,
-  Step,
+  Step as StepperStep,
   StepLabel,
   Button,
+  Card,
 } from "@mui/material";
+import { Step } from "./Step";
+import { steps, questions } from "../constants";
+import { Question } from "./Question";
 
-import { Link } from "react-router-dom";
+export default function FormComponent({ setFinishStatus }) {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState(questions.map(() => null));
 
-export default function FormComponent(props) {
-  const { setFinishStatus } = props;
-  const [q1SelectedValue, setQ1SelectedValue] = useState(null);
-  const [q2SelectedValue, setQ2SelectedValue] = useState(null);
-  const [q3SelectedValue, setQ3SelectedValue] = useState(null);
-  const [q4SelectedValue, setQ4SelectedValue] = useState(null);
-  const [q5SelectedValue, setQ5SelectedValue] = useState(null);
-  const [activeStep, setActiveStep] = useState(0);
-  const [answers, setAnswers] = useState({
-    Q1: null,
-    Q2: null,
-    Q3: null,
-    Q4: null,
-    Q5: null,
-  });
-  const [disable, setDisable] = useState(true);
+  const isFirstStep = currentStep === 0;
+  const isLastStep = currentStep === questions.length - 1;
+  const isDisableToNext = answers[currentStep] === null;
 
-  // function on Next button
-
-  const nextStep = () => {
-    if (steps.length) {
-      setActiveStep(activeStep + 1);
-    }
-
-    setDisable(true);
+  const saveAnswer = (answer, index) => {
+    const updatedAnswer = answers.map((x, i) => (i === index ? answer : x));
+    setAnswers(updatedAnswer);
   };
-
-  // function on Previous button
-
-  const previousStep = (e) => {
-    if (activeStep !== 0) {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
-
-    if (activeStep !== steps.length) {
-      setActiveStep(activeStep - 1);
-    }
-  };
-
-  // function on Fininsh button
-
-  console.log(answers);
-
-  let sum=0;
 
   const handleFinish = (e) => {
+    let sum = 0;
     for (let i in answers) {
       sum += answers[i];
     }
-    console.log(sum);
     if (sum > 39) {
       setFinishStatus(true);
     } else {
@@ -80,219 +37,14 @@ export default function FormComponent(props) {
     }
   };
 
-  const handleQuestionOne = (e) => {
-    setDisable(false);
-
-    setQ1SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q1Detail);
-    const name = e.name;
-
-    setAnswers({ ...answers, [name]: value });
-  };
-
-  const handleQuestionTwo = (e) => {
-    // handleRadio(item)
-
-    setQ2SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q2Detail);
-    const name = e.name;
-
-    setAnswers({ ...answers, [name]: value });
-    setDisable(false);
-  };
-
-  const handleQuestionThree = (e) => {
-    setQ3SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q3Detail);
-    const name = e.name;
-
-    setAnswers({ ...answers, [name]: value });
-    setDisable(false);
-  };
-
-  const handleQuestionFour = (e) => {
-    setQ4SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q2Detail);
-    const name = e.name;
-
-    setAnswers({ ...answers, [name]: value });
-    setDisable(false);
-  };
-
-  const handleQuestionFive = (e) => {
-    setQ5SelectedValue(e.value);
-
-    const value = e.value;
-    console.log(Q2Detail);
-    const name = e.name;
-
-    setAnswers({ ...answers, [name]: value });
-
-    setDisable(false);
-  };
-
-  // definning array for steppers
-
-  const steps = [
-    "Question 1",
-    "Question 2",
-    "Question 3",
-    "Question 4",
-    "Question 5",
-  ];
-
-  const isDisableToMoveForward =
-    activeStep === steps.length &&
-    q1SelectedValue === null &&
-    q2SelectedValue === null &&
-    q3SelectedValue === null &&
-    q4SelectedValue === null &&
-    q5SelectedValue === null;
-
-  const getStepContent = (stepIndex) => {
-    switch (stepIndex) {
-      case 0:
-        return (
-          <Box>
-            <h2>Question 1 of 5</h2>
-            <FormControl>
-              <h3>
-                You are really busy at work and a colleague is telling you their
-                life story and personal woes. You:
-              </h3>
-
-              <RadioGroup value={q1SelectedValue}>
-                {Q1Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionOne(item)}
-                    name="Q1"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-          </Box>
-        );
-
-      case 1:
-        return (
-          <Box>
-            <h2>Question 2 of 5</h2>
-            <FormControl>
-              <h3>
-                You have been sitting in the doctor's waiting room for more than
-                25 minutes. You:
-              </h3>
-
-              <RadioGroup value={q2SelectedValue}>
-                {Q2Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionTwo(item)}
-                    name="Q2"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-          </Box>
-        );
-
-      case 2:
-        return (
-          <Box>
-            <h2>Question 3 of 5</h2>
-            <FormControl>
-              <h3>You are taking part in a guided tour of a museum. You:</h3>
-
-              <RadioGroup value={q3SelectedValue}>
-                {Q3Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    value={item.value}
-                    onChange={() => handleQuestionThree(item)}
-                    name="Q3"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-          </Box>
-        );
-
-      case 3:
-        return (
-          <Box>
-            <h2>Question 4 of 5</h2>
-            <FormControl>
-              <h3>
-                During dinner parties at your home, you have a hard time with
-                people who:
-              </h3>
-
-              <RadioGroup value={q4SelectedValue}>
-                {Q4Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionFour(item)}
-                    name="Q4"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-          </Box>
-        );
-
-      case 4:
-        return (
-          <Box>
-            <h2>Question 5 of 5</h2>
-            <FormControl>
-              <h3>
-                You have been see a movie with your family and the reviews are
-                mixed. You:
-              </h3>
-
-              <RadioGroup value={q5SelectedValue}>
-                {Q5Detail.map((item) => (
-                  <FormControlLabel
-                    key={item.value}
-                    value={item.value}
-                    control={<Radio color="primary" />}
-                    label={item.option}
-                    onChange={() => handleQuestionFive(item)}
-                    name="Q5"
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-          </Box>
-        );
-
-      default:
-        return "Unknown stepIndex";
-    }
-  };
-
   return (
-    <Box className="mainbg">
+    <Box
+      className="mainbg"
+      height={"100vh"}
+      sx={{
+        backgroundColor: "#6dc7e8",
+      }}
+    >
       <Box>
         <Box
           sx={{
@@ -303,59 +55,89 @@ export default function FormComponent(props) {
           }}
         >
           <Stepper
-            sx={{ mt: 1, width: "70%", color: "white", pt: 2 }}
-            activeStep={activeStep}
+            sx={{
+              mt: 1,
+              color: "black",
+              pt: 2,
+            }}
+            activeStep={currentStep}
+            model={steps}
             alternativeLabel
           >
             {steps.map((label) => (
-              <Step key={label} className={"red"}>
-                <StepLabel sx={{ color: "white" }}>{label}</StepLabel>
-              </Step>
+              <StepperStep
+                key={label}
+                sx={{ pl: { xs: 0.6, sm: "8px" }, pr: { xs: 0.5, sm: "8px" } }}
+              >
+                <StepLabel sx={{ color: "black" }}>{label}</StepLabel>
+              </StepperStep>
             ))}
           </Stepper>
         </Box>
-        <br />
         <Box
           sx={{
+            height: "auto",
             display: "flex",
             justifyContent: "center",
+            alignItems: "center",
+            mt: 3,
           }}
         >
-          <Box
+          <Card
             sx={{
               borderRadius: 4,
               ml: 4,
               pl: 4,
+              pr: 4,
               mr: 4,
               pt: 2,
-              boxShadow: 3,
-              bgcolor: "rgba(255,255,255,0.3)",
-              width: "70%",
+              width: "90%",
+
+              bgcolor: "transparent",
+              color: "black",
+              height: "auto",
+              boxShadow: "0 5px 15px rgba(0,0,0,.5)",
+              position: "relative",
+              zIndex: "1",
+              "&:before": {
+                position: "absolute",
+                content: '""',
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                opacity: "0.3",
+                background: "#fff",
+                zIndex: "-1",
+              },
             }}
           >
-            <Box
-              sx={{
-                ml: 4,
-                mr: 4,
-                width: "70%",
-                height: "auto",
-              }}
-            ></Box>
-            <Box>{getStepContent(activeStep)}</Box>
+            {questions.map((question, index) => (
+              <Step
+                index={index}
+                key={index}
+                activeIndex={currentStep}
+                component={
+                  <Question
+                    details={question}
+                    answer={answers[index]}
+                    setAnswer={(answer) => saveAnswer(answer, index)}
+                  />
+                }
+              />
+            ))}
 
             <Box sx={{ display: "flex", mt: 3, mb: 2 }}>
               <Button
-                disabled={activeStep === 0}
                 variant="contained"
-                color="primary"
-                onClick={(e) => previousStep(e)}
+                disabled={isFirstStep}
+                onClick={() => setCurrentStep((previous) => previous - 1)}
               >
                 Previous
               </Button>
-              {activeStep === steps.length - 1 ? (
+              {isLastStep ? (
                 <Link to="/result" style={{ textDecoration: "none" }}>
                   <Button
-                    disabled={disable}
                     sx={{ ml: "4px" }}
                     variant="contained"
                     color="primary"
@@ -366,17 +148,17 @@ export default function FormComponent(props) {
                 </Link>
               ) : (
                 <Button
-                  disabled={disable}
                   sx={{ ml: "4px" }}
                   variant="contained"
+                  disabled={isDisableToNext}
                   color="primary"
-                  onClick={(e) => nextStep(e)}
+                  onClick={() => setCurrentStep((previous) => previous + 1)}
                 >
                   Next
                 </Button>
               )}
             </Box>
-          </Box>
+          </Card>
         </Box>
       </Box>
     </Box>

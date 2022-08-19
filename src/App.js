@@ -1,9 +1,10 @@
 import "./App.css";
 import FormComponent from "./Components/FormComponent";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./Components/Home";
 import { Result } from "./Components/Result";
 import { useState } from "react";
+
 function App() {
   const [isFinish, setFinishStatus] = useState(false);
 
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="showForm"
+          path="questions"
           element={<FormComponent setFinishStatus={setFinishStatus} />}
         />
         <Route path="/result" element={<Result isFinish={isFinish} />} />

@@ -1,6 +1,6 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Card } from "@mui/material";
 import { Link } from "react-router-dom";
-
+import Psychometric from "../assets/images/Psychometric.png";
 
 export function Result(props) {
   const { isFinish } = props;
@@ -12,60 +12,107 @@ export function Result(props) {
       alignItems={"center"}
       flexDirection={"column"}
       height={"100vh"}
-      marginRight={"10%"}
-      marginLeft={"10%"}
+      backgroundColor={"#6dc7e8"}
     >
+      <Card
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          borderRadius: 4,
+          ml: 4,
+          pl: 4,
+          pr: 4,
+          mr: 4,
+          pt: 2,
+          pb: 2,
+          width: "70%",
 
-
-      <Box>
-        {isFinish ? (
-          <Box >
-            {" "}
+          bgcolor: "transparent",
+          color: "black",
+          height: "auto",
+          boxShadow: "0 5px 15px rgba(0,0,0,.5)",
+          position: "relative",
+          zIndex: "1",
+          "&:before": {
+            position: "absolute",
+            content: '""',
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            opacity: "0.3",
+            background: "#fff",
+            zIndex: "-1",
+          },
+        }}
+      >
+        <Box>
+          {isFinish ? (
             <Box
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              flexDirection={"row"}
-              fontFamily={"Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"}
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
             >
-              <h1>" You are an Extrovert! "</h1>
+              <img src={Psychometric} width={"190px"} alt="brain" />
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                flexDirection={"row"}
+                fontFamily={
+                  "Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                }
+              >
+                <h1>" You are an Extrovert! "</h1>
+              </Box>
+              <h3>
+                On the positive side, extroverts are often described as
+                talkative, sociable, action-oriented, enthusiastic, friendly,
+                and out-going. On the negative side, they are sometimes
+                described as attention-seeking, easily distracted, and unable to
+                spend time alone
+              </h3>{" "}
             </Box>
-            <h3>
-              On the positive side, extroverts are often described as talkative,
-              sociable, action-oriented, enthusiastic, friendly, and out-going.
-              On the negative side, they are sometimes described as
-              attention-seeking, easily distracted, and unable to spend time
-              alone
-            </h3>{" "}
-          </Box>
-        ) : (
-          <Box>
+          ) : (
             <Box
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              flexDirection={"row"}
-              fontFamily={"Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"}
-
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
             >
-              <h1>" You are an Introvert! "</h1>
+              <img src={Psychometric} width={"190px"} alt="brain" />
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                flexDirection={"row"}
+                fontFamily={
+                  "Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                }
+              >
+                <h1>" You are an Introvert! "</h1>
+              </Box>
+              <h3>
+                An introvert is a person with qualities of a personality type
+                known as introversion, which means that they feel more
+                comfortable focusing on their inner thoughts and ideas, rather
+                than what's happening externally. They enjoy spending time with
+                just one or two people, rather than large groups or crowds
+              </h3>
             </Box>
-            <h3>
-              An introvert is a person with
-              qualities of a personality type known as introversion, which means
-              that they feel more comfortable focusing on their inner thoughts
-              and ideas, rather than what's happening externally. They enjoy
-              spending time with just one or two people, rather than large
-              groups or crowds
-            </h3>
-          </Box>
-        )}
-      </Box>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <Button variant="contained" color="primary">
-          Reset
-        </Button>
-      </Link>
+          )}
+        </Box>
+        <Box>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Button variant="contained" color="primary">
+              Reset
+            </Button>
+          </Link>
+        </Box>
+      </Card>
     </Box>
   );
 }
