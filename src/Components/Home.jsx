@@ -54,8 +54,7 @@ export function Home() {
           <img src={Psychometric} width={"190px"} alt="brain" />
 
           <Typography
-            fontSize={"1.5rem"}
-            fontWeight={"550"}
+            variant="h1"
             mt={3}
             mb={2}
             textTransform={"uppercase"}
@@ -63,10 +62,7 @@ export function Home() {
           >
             Are you an introvert or an extrovert?
           </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ textAlign: "start", fontWeight: "normal" }}
-          >
+          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
             Introverts are generally more sensitive to low-intensity stimuli -
             they are mentally alerted to inputs that extroverts may miss."
             <cite>-Laurie Helgoe.</cite>

@@ -5,6 +5,7 @@ import {
   FormControlLabel,
   RadioGroup,
   Box,
+  Typography,
 } from "@mui/material";
 
 export const Question = ({
@@ -18,22 +19,19 @@ export const Question = ({
     <Box>
       {/* <h2>{label} of 5</h2> */}
       <FormControl>
-        <h3>{question}</h3>
+        <Typography variant="h1">{question}</Typography>
 
         <RadioGroup value={answer}>
           {questionOptions.map(({ name, value, option, index }) => (
             <FormControlLabel
               key={value}
               value={value}
-              // onSelect={selectedValue}
               control={<Radio />}
-              label={option}
+              label={<Typography variant="subtitle1">{option}</Typography>}
               checked={answer == value}
               onChange={(event) => {
-                console.log("Answer->", event.target.value);
                 setAnswer(event.target.value);
               }}
-              // name={label}
             />
           ))}
         </RadioGroup>
