@@ -1,4 +1,4 @@
-import FormComponent from "./Components/FormComponent";
+import FormComponent from "./Components/QuestionsContainer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./Components/Home";
 import { Result } from "./Components/Result";
