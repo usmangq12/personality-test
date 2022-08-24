@@ -1,4 +1,4 @@
-import { Box, Button, Card } from "@mui/material";
+import { Box, Button, Card, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import Psychometric from "../assets/images/Psychometric.png";
 
@@ -58,6 +58,8 @@ export function Result(props) {
             >
               <img src={Psychometric} width={"190px"} alt="brain" />
               <Box
+                mt={2}
+                mb={2}
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
@@ -66,15 +68,15 @@ export function Result(props) {
                   "Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 }
               >
-                <h1>" You are an Extrovert! "</h1>
+                <Typography variant="h1">" You are an Extrovert! "</Typography>
               </Box>
-              <h3>
+              <Typography variant="subtitle1">
                 On the positive side, extroverts are often described as
                 talkative, sociable, action-oriented, enthusiastic, friendly,
                 and out-going. On the negative side, they are sometimes
                 described as attention-seeking, easily distracted, and unable to
                 spend time alone
-              </h3>{" "}
+              </Typography>{" "}
             </Box>
           ) : (
             <Box
@@ -85,6 +87,8 @@ export function Result(props) {
             >
               <img src={Psychometric} width={"190px"} alt="brain" />
               <Box
+                mt={2}
+                mb={2}
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
@@ -93,21 +97,25 @@ export function Result(props) {
                   "Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 }
               >
-                <h1>" You are an Introvert! "</h1>
+                <Typography variant="h1">" You are an Introvert! "</Typography>
               </Box>
-              <h3>
+              <Typography variant="subtitle1">
                 An introvert is a person with qualities of a personality type
                 known as introversion, which means that they feel more
                 comfortable focusing on their inner thoughts and ideas, rather
                 than what's happening externally. They enjoy spending time with
                 just one or two people, rather than large groups or crowds
-              </h3>
+              </Typography>
             </Box>
           )}
         </Box>
         <Box>
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ pl: 5, pr: 5, mt: 2 }}
+            >
               Reset
             </Button>
           </Link>

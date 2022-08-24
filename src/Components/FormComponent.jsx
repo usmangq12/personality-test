@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Stepper,
@@ -15,6 +15,7 @@ import { Question } from "./Question";
 export default function FormComponent({ setFinishStatus }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState(questions.map(() => null));
+  const navigate = useNavigate();
 
   const isFirstStep = currentStep === 0;
   const isLastStep = currentStep === questions.length - 1;
@@ -25,7 +26,7 @@ export default function FormComponent({ setFinishStatus }) {
     setAnswers(updatedAnswer);
   };
 
-  const handleFinish = (e) => {
+  const handleFinish = () => {
     let sum = 0;
     for (let i in answers) {
       sum += answers[i];
@@ -35,11 +36,12 @@ export default function FormComponent({ setFinishStatus }) {
     } else {
       setFinishStatus(false);
     }
+
+    navigate("/result");
   };
 
   return (
     <Box
-      className="mainbg"
       height={"100vh"}
       sx={{
         backgroundColor: "#6dc7e8",
@@ -136,16 +138,15 @@ export default function FormComponent({ setFinishStatus }) {
                 Previous
               </Button>
               {isLastStep ? (
-                <Link to="/result" style={{ textDecoration: "none" }}>
-                  <Button
-                    sx={{ ml: "4px" }}
-                    variant="contained"
-                    color="primary"
-                    onClick={(e) => handleFinish(e)}
-                  >
-                    Finish
-                  </Button>
-                </Link>
+                <Button
+                  sx={{ ml: "4px" }}
+                  variant="contained"
+                  disabled={isDisableToNext}
+                  color="primary"
+                  onClick={handleFinish}
+                >
+                  Finish
+                </Button>
               ) : (
                 <Button
                   sx={{ ml: "4px" }}
