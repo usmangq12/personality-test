@@ -14,19 +14,9 @@ The project primarily uses following technologies:
 
 The UI is designed using Material UI.
 
-![image](https://user-images.githubusercontent.com/36767215/186366917-14398096-8c08-416c-a316-dd4f8660672b.png)
-
-![image](https://user-images.githubusercontent.com/36767215/186367175-6ed8f12a-6de7-4874-9eb9-f61f6de7aa6a.png)
-
-![image](https://user-images.githubusercontent.com/36767215/186367307-225d171b-5115-448a-b3d0-e353bb66df0a.png)
-
-![image](https://user-images.githubusercontent.com/36767215/186367415-8a352008-76ea-4c63-9cc5-cebdb4a2a83b.png)
-
-![image](https://user-images.githubusercontent.com/36767215/186367547-ad16b248-2509-4bf0-9a86-189d69d3c340.png)
-
-![image](https://user-images.githubusercontent.com/36767215/186367707-bd832aa5-119f-43e0-8c3f-18e5a42456fa.png)
-
-![image](https://user-images.githubusercontent.com/36767215/186367832-9c6f4e19-db19-4883-9a5f-d8339a72dfa1.png)
+![image](https://user-images.githubusercontent.com/36767215/207085442-66f1649e-8847-43b2-a1ef-2d59d942a519.png)
+![image](https://user-images.githubusercontent.com/36767215/207085717-fc84f5ad-42a4-46ce-bfd8-39a77c5dd2a1.png)
+![image](https://user-images.githubusercontent.com/36767215/207086044-00a0dce8-c64b-43c3-9579-716f5315d31e.png)
 
 # Getting Started with Create React App
 
