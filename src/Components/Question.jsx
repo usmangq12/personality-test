@@ -26,9 +26,9 @@ export const Question = ({
             <FormControlLabel
               key={value}
               value={value}
-              control={<Radio />}
+              control={<Radio color="primary" />}
               label={<Typography variant="subtitle1">{option}</Typography>}
-              checked={answer == value}
+              checked={answer === value}
               onChange={(event) => {
                 setAnswer(event.target.value);
               }}
