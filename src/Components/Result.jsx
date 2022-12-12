@@ -22,23 +22,6 @@ export function Result(props) {
             alignItems: "center",
             flexDirection: "column",
             borderRadius: 4,
-            p: 4,
-            color: "black",
-
-            // boxShadow: "0 5px 15px rgba(0,0,0,.5)",
-            // position: "relative",
-            // zIndex: "1",
-            // "&:before": {
-            //   position: "absolute",
-            //   content: '""',
-            //   top: "0",
-            //   left: "0",
-            //   width: "100%",
-            //   height: "100%",
-            //   opacity: "0.3",
-            //   background: "#fff",
-            //   zIndex: "-1",
-            // },
           }}
         >
           <Box>
@@ -96,7 +79,7 @@ export function Result(props) {
                     " You are an Introvert! "
                   </Typography>
                 </Box>
-                <Typography variant="subtitle1">
+                <Typography variant="subtitle1" textAlign={"center"}>
                   An introvert is a person with qualities of a personality type
                   known as introversion, which means that they feel more
                   comfortable focusing on their inner thoughts and ideas, rather

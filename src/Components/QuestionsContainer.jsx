@@ -39,9 +39,6 @@ export default function FormComponent({ setFinishStatus }) {
     } else {
       setFinishStatus(false);
     }
-
-    console.log("sum", sum);
-
     navigate("/result");
   };
 
@@ -102,23 +99,6 @@ export default function FormComponent({ setFinishStatus }) {
                 pr: 4,
                 mr: 4,
                 pt: 2,
-                width: "90%",
-
-                // bgcolor: "transparent",
-                color: "black",
-                // position: "relative",
-                // zIndex: "1",
-                // "&:before": {
-                //   position: "absolute",
-                //   content: '""',
-                //   top: "0",
-                //   left: "0",
-                //   width: "100%",
-                //   height: "100%",
-                //   opacity: "0.3",
-                //   background: "#fff",
-                //   zIndex: "-1",
-                // },
               }}
             >
               {questions.map((question, index) => (

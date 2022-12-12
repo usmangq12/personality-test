@@ -17,7 +17,6 @@ export const Question = ({
 
   return (
     <Box>
-      {/* <h2>{label} of 5</h2> */}
       <FormControl>
         <Typography variant="h1">{question}</Typography>
 
