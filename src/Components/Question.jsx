@@ -28,7 +28,7 @@ export const Question = ({
               value={value}
               control={<Radio color="primary" />}
               label={<Typography variant="subtitle1">{option}</Typography>}
-              checked={answer === value}
+              checked={answer == value}
               onChange={(event) => {
                 setAnswer(event.target.value);
               }}

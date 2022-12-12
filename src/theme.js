@@ -58,8 +58,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: "#2e937a",
-          "& .Mui-checked": {
-            fill: "#2e937a",
+          "&.Mui-checked": {
+            color: "#2e937a",
           },
         },
       },
