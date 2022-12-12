@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Typography, Card, Grid, CardMedia } from "@mui/material";
+import { Button, Typography, Card, Grid, CardMedia } from "@mui/material";
 import { Link } from "react-router-dom";
 import Psychometric from "../assets/images/Psychometric.png";
 import test from "../assets/images/test.svg";
