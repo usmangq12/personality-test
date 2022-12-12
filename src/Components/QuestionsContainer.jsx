@@ -30,14 +30,17 @@ export default function FormComponent({ setFinishStatus }) {
 
   const handleFinish = () => {
     let sum = 0;
+
     for (let i in answers) {
-      sum += answers[i];
+      sum += parseInt(answers[i]);
     }
     if (sum > 39) {
       setFinishStatus(true);
     } else {
       setFinishStatus(false);
     }
+
+    console.log("sum", sum);
 
     navigate("/result");
   };
