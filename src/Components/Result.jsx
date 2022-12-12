@@ -22,6 +22,7 @@ export function Result(props) {
             alignItems: "center",
             flexDirection: "column",
             borderRadius: 4,
+            p: 4,
           }}
         >
           <Box>
