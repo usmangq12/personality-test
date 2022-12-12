@@ -1,13 +1,16 @@
 import { createTheme } from "@mui/material";
 
 const theme = createTheme({
+  // palette: {
+  main: "#2e937a",
+  themeLighGrey: "#dcdcdb",
+  // },
   components: {
     MuiTypography: {
       styleOverrides: {
         h1: {
-          color: "#fff",
+          color: "#2e937a",
           fontSize: "1.5rem",
-          textShadow: "1px 1px #c39b52",
           fontWeight: "550",
         },
         subtitle1: {
@@ -17,14 +20,22 @@ const theme = createTheme({
         },
       },
     },
-
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          background: "#2e937a",
+          padding: 0,
+          margin: 0,
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: "#c39b52",
+          backgroundColor: "#2e937a",
 
           "&:hover": {
-            backgroundColor: "#c39b52",
+            backgroundColor: "#2e937a",
           },
         },
       },
@@ -34,7 +45,10 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "&.Mui-active, &.Mui-completed": {
-            color: "#c39b52",
+            color: "#dcdcdb",
+            "& .MuiStepIcon-text": {
+              fill: "#2e937a",
+            },
           },
         },
       },
@@ -43,9 +57,17 @@ const theme = createTheme({
     MuiRadio: {
       styleOverrides: {
         root: {
-          " &.Mui-checked": {
-            color: "#c39b52",
+          color: "#2e937a",
+          "&.Mui-checked": {
+            color: "#2e937a",
           },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          background: "#dcdcdb",
         },
       },
     },

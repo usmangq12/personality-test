@@ -17,7 +17,6 @@ export const Question = ({
 
   return (
     <Box>
-      {/* <h2>{label} of 5</h2> */}
       <FormControl>
         <Typography variant="h1">{question}</Typography>
 
@@ -26,7 +25,7 @@ export const Question = ({
             <FormControlLabel
               key={value}
               value={value}
-              control={<Radio />}
+              control={<Radio color="primary" />}
               label={<Typography variant="subtitle1">{option}</Typography>}
               checked={answer == value}
               onChange={(event) => {
